@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Pokemon</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="style.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function(){
+                var newRow ="";
+                for(var i =1; i <152;i++){
+                    newRow+="<img id='"+i+"' src='http://pokeapi.co/media/img/"+i+".png'>";
+                }
+                $('.pokemons').append(newRow);
+
+                $('img').click(function(){
+                    
+                    var poke = $(this).attr('id');
+                   
+                    $.get("https://pokeapi.co/api/v1/pokemon/"+poke+"/",function(res){
+                        var list ="";
+                        var pokeName = res.name;
+                        $('h1').text(pokeName);
+                        $('#types').text("Types");
+                        for(var i=0; i < res.types.length; i++){
+                            list += "<li>"+res.types[i].name + "</li>";
+                        }
+                        $('ul').html(list);
+                        $('#height').text("Height");
+                        $('#heightdetail').text(res.height);
+                        $('#weight').text("Weight");
+                        $('#weightdetail').text(res.weight);                     
+
+                    },"json");
+
+                    $(".detailimg").attr('src',"http://pokeapi.co/media/img/"+poke+".png");
+                })
+               
+
+
+            })
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <div class="pokemons">
+            </div>
+            <div class="pokedetails">
+                <h1></h1>
+                <img class="detailimg" src="" alt="">
+                <h3 id="types"></h3>
+                <ul></ul>
+                <h3 id="height"></h3>
+                <p id="heightdetail"></p>
+                <h3 id="weight"></h3>
+                <p id="weightdetail"></p>                
+                
+            </div>
+
+        </div>
+    
+    </body>
+</html>

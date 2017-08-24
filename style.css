@@ -1,0 +1,38 @@
+.container{
+    margin: 0 auto;
+    width: 1080px;
+    padding-left: 30px;
+    background-color: grey;
+}
+
+img{
+    height: 120px;
+    width: 120px;
+    
+}
+
+.pokemons{
+    width: 750px;
+    background-color:silver;
+    display: inline-block;
+}
+
+.pokedetails{
+    height: 450px;
+    width: 220px;
+    border: 20px solid red;
+    border-bottom-width: 50px;
+    display: inline-block;
+    vertical-align: top;
+    margin-left: 30px;
+    padding-left: 10px;
+}
+
+h1{
+    text-align: center;
+}
+
+.detailimg{
+    margin-left: 50px;
+    margin-top: -20px;
+}
